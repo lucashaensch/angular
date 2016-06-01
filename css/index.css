@@ -45,6 +45,14 @@ tr.selected {
 	background: #e0e0e0;
 }
 
+td .btn-danger {
+	padding: 3px 4px;
+}
+
+.fa-trash {
+	color: rgba(255, 255, 255, .95);
+}
+
 input.form-control, select.form-control {
 	width: 100%;
 }
@@ -62,4 +70,15 @@ li {
 
 body {
 	background: #EEE;
+}
+
+.footer {
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, .9);
+	padding: 11px 0;
+	font-family: futura;
+	box-shadow: 0 -4px 16px rgba(0, 0, 0, .05);
 }

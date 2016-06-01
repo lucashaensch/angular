@@ -3,6 +3,7 @@
 	<title>{{title}}</title>
 	<meta charset="UTF-8"> 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/index.css">
 </head>
 <body ng-controller="listaCtrl">
@@ -35,17 +36,24 @@
 			</li>
 		</ul>
 	</div>
+
 	<div class="container" ng-if="contatos.length > 0">
 		<table class="table">
 			<tr>
 				<th>nome</th>
 				<th>fone</th>
 				<th>operadora</th>
+				<th></th>
 			</tr>
 			<tr ng-class="{'selected': contato.selected}" ng-repeat="contato in contatos" ng-click="contato.selected = !contato.selected">
 				<td>{{contato.name}}</td>
 				<td>{{contato.phone}}</td>
 				<td>{{contato.operadora.name}}</td>
+				<td>
+					<button class="btn btn-danger" ng-click="removeContact(contatos, contato)">
+						<i class="fa fa-trash"></i>
+					</button>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -53,8 +61,13 @@
 	<div class="container no-bg text-center">
 		<h4 ng-if="contatos.length == 0">No contacts found.</h4>
 		<button class="btn btn-danger pull-right" ng-disabled="!isContatoSelecionado(contatos)"
-				ng-click="removeContacts(contatos);" ng-if="contatos.length > 0">delete selected</button>
+				ng-click="removeContacts(contatos);" ng-if="contatos.length > 0">
+			<i class="fa fa-trash"></i>
+			delete selected
+		</button>
 	</div>
+
+	<div ng-include="'parts/footer.html'"></div>
 
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="https://code.angularjs.org/1.5.6/angular.min.js"></script>

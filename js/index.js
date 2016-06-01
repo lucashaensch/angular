@@ -35,4 +35,10 @@ function ListaCtrl($scope){
 			if (!contato.selected) return contato;
 		})
 	}
+
+	$scope.removeContact = function(contatos, contato){
+		$scope.contatos = contatos.filter(function(con){
+			if (con != contato) return con;
+		})
+	}
 }
