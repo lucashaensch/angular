@@ -1,0 +1,64 @@
+<html ng-app="Lista">
+<head>
+	<title>{{title}}</title>
+	<meta charset="UTF-8"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body ng-controller="listaCtrl">
+	
+	<div class="container blue text-center">
+		<h1>Lista telefônica</h1>
+	</div>
+
+	<div class="container">
+		<ul class="list-inline">
+			<li>
+				<input type="text" ng-model="contato.name" class="form-control" placeholder="name"/>
+			</li>
+			<li>
+				<input type="text" ng-model="contato.phone" class="form-control" placeholder="phone"/>
+			</li>
+			<li>
+				<select 
+					ng-model="contato.operadora" 
+					ng-options="operadora.name group by operadora.categoria for operadora in operadoras" 
+					class="form-control">
+					<option value="">selecione a operadora</option>
+				</select>
+			</li>
+			<li>
+				<button 
+				ng-disabled="!contato.phone || !contato.name"
+				class="btn btn-primary btn-block" 
+				ng-click="addContact(contato);">add contact</button>
+			</li>
+		</ul>
+	</div>
+	<div class="container" ng-if="contatos.length > 0">
+		<table class="table">
+			<tr>
+				<th>nome</th>
+				<th>fone</th>
+				<th>operadora</th>
+			</tr>
+			<tr ng-class="{'selected': contato.selected}" ng-repeat="contato in contatos" ng-click="contato.selected = !contato.selected">
+				<td>{{contato.name}}</td>
+				<td>{{contato.phone}}</td>
+				<td>{{contato.operadora.name}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="container no-bg text-center">
+		<h4 ng-if="contatos.length == 0">No contacts found.</h4>
+		<button class="btn btn-danger pull-right" ng-disabled="!isContatoSelecionado(contatos)"
+				ng-click="removeContacts(contatos);" ng-if="contatos.length > 0">delete selected</button>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.6/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
