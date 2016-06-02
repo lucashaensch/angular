@@ -11,12 +11,12 @@ function ListaCtrl($scope){
 	];
 
 	$scope.operadoras = [
-		{name: 'Oi', code: 14, categoria: 'celular'},
-		{name: 'Vivo', code: 15, categoria: 'celular'},
-		{name: 'Tim', code: 41, categoria: 'celular'},
-		{name: 'Claro', code: 12, categoria: 'celular'},
-		{name: 'GVT', code: 25, categoria: 'fixo'},
-		{name: 'Embratel', code: 21, categoria: 'fixo'}
+		{name: 'Oi', code: 14, categoria: 'Celular'},
+		{name: 'Vivo', code: 15, categoria: 'Celular'},
+		{name: 'Tim', code: 41, categoria: 'Celular'},
+		{name: 'Claro', code: 12, categoria: 'Celular'},
+		{name: 'GVT', code: 25, categoria: 'Fixo'},
+		{name: 'Embratel', code: 21, categoria: 'Fixo'}
 	];
 
 	$scope.isContatoSelecionado = function(contatos){

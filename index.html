@@ -8,33 +8,40 @@
 </head>
 <body ng-controller="listaCtrl">
 	
-	<div class="container blue text-center">
+	<div class="container text-center">
 		<h1>Lista telefônica</h1>
-	</div>
-
-	<div class="container">
-		<ul class="list-inline">
-			<li>
-				<input type="text" ng-model="contato.name" class="form-control" placeholder="name"/>
-			</li>
-			<li>
-				<input type="text" ng-model="contato.phone" class="form-control" placeholder="phone"/>
-			</li>
-			<li>
-				<select 
-					ng-model="contato.operadora" 
-					ng-options="operadora.name group by operadora.categoria for operadora in operadoras" 
-					class="form-control">
-					<option value="">selecione a operadora</option>
-				</select>
-			</li>
-			<li>
-				<button 
-				ng-disabled="!contato.phone || !contato.name"
-				class="btn btn-primary btn-block" 
-				ng-click="addContact(contato);">add contact</button>
-			</li>
-		</ul>
+		<form name="contatoForm" class="text-left">
+			<ul class="list-inline">
+				<li>
+					<label for="name">Nome</label>
+					<input type="text" ng-model="contato.name" class="form-control" placeholder="name" ng-required="true"/>
+				</li>
+				<li>
+					<label for="phone">Telefone</label>
+					<input type="text" ng-model="contato.phone" class="form-control" placeholder="phone" ng-required="true"/>
+				</li>
+				<li>
+					<label for="operadora">Operadora</label>
+					<select 
+						ng-model="contato.operadora" 
+						ng-options="operadora.name group by operadora.categoria for operadora in operadoras" 
+						class="form-control">
+						<option value="">Selecione...</option>
+					</select>
+				</li>
+				<li>
+					<button 
+					ng-disabled="contatoForm.$invalid"
+					class="btn btn-primary btn-block" 
+					ng-click="addContact(contato);">Adicionar contato</button>
+				</li>
+				<!-- <li ng-if="contatoForm.$invalid">
+					<div class="alert alert-danger">
+						<span>pfvr, preencha nome e telefone</span>
+					</div>
+				</li> -->
+			</ul>
+		</form>
 	</div>
 
 	<div class="container" ng-if="contatos.length > 0">
